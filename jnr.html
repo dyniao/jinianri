@@ -3,22 +3,39 @@
 <head>
     <meta charset="utf-8" />
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-    <script src="jquery.jnr-time.min.js"></script>
+    <script src="jquery.jnr-time.js"></script>
     <title>纪念日插件</title>
     <script type="text/javascript">
         $(document).ready(function() {
         	//获取URL#的值
             var hash=window.location.hash.replace("#",""),date;
             date=hash?new Date(Date.parse(hash.replace(/-/g,"/"))):Date();
-            $("body").jnr({
-                mydatetime:date,
+
+            $("#model0").jnr({
+                mydatetime:"2013-11-30",
+                model:0
+            });
+            $("#model1").jnr({
+                mydatetime:"2012-11-30",
+                model:1
+            });
+            $("#model2").jnr({
+                mydatetime:"2020-11-30",
+                model:1
+            });
+            $("#model3").jnr({
+                mydatetime:"2030-12-21 12:34:56",
                 model:0,
-                //template:"{s}"
+                format:"yyyy年MM月dd日 hh时mm分ss秒",
+                template:"自定义模板 &raquo; 距 {t} &raquo; 还有{d}天{h}小时{m}分钟{s}秒"
             });
         });
     </script>
 </head>
 <body>
-
+<div id="model0">2013-11-30</div>
+<div id="model1">2012-11-30</div>
+<div id="model2">2020-11-30</div>
+<div id="model3">2030-11-30</div>
 </body>
 </html>
